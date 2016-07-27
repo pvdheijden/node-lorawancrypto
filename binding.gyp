@@ -9,12 +9,12 @@
             ],
             "define": [ ],
             "sources": [
-                "LoRaMacCrypto.c",
-                "crypto/aes.c",
-                "crypto/cmac.c"
+                "LoRaMac/LoRaMacCrypto.c",
+                "LoRaMac/crypto/aes.c",
+                "LoRaMac/crypto/cmac.c"
             ],
             "include_dirs": [
-                "crypto"
+                "LoRaMac/crypto"
             ],
             "link_settings": {
                 "libraries": [ ]
