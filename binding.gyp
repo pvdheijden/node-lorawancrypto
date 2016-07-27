@@ -4,8 +4,6 @@
             "target_name": "lorawan-crypto",
             "type": "<(library)",
             "cflags": [
-                "-g",
-                "-std=gnu1x",
                 "Wall",
                 "Wextra"
             ],
