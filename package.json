@@ -1,0 +1,25 @@
+{
+  "name": "lorawan-crypto",
+  "version": "1.0.0",
+  "description": "Node.js wrapper of LoRaWAN crypto functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pvdheijden/node-lorawan-crypto.git"
+  },
+  "keywords": [
+    "LoRa",
+    "LoRaWAN",
+    "crypto",
+    "AES"
+  ],
+  "author": "Pim",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/pvdheijden/node-lorawan-crypto/issues"
+  },
+  "homepage": "https://github.com/pvdheijden/node-lorawan-crypto#readme"
+}
