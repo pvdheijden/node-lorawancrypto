@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pvdheijden/node-lorawan-crypto.git"
+    "url": "git+https://github.com/pvdheijden/node-lorawancrypto.git"
   },
   "keywords": [
     "LoRa",
@@ -19,7 +19,7 @@
   "author": "Pim",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/pvdheijden/node-lorawan-crypto/issues"
+    "url": "https://github.com/pvdheijden/node-lorawancrypto/issues"
   },
-  "homepage": "https://github.com/pvdheijden/node-lorawan-crypto#readme"
+  "homepage": "https://github.com/pvdheijden/node-lorawancrypto#readme"
 }

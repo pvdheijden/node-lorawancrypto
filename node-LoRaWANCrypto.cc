@@ -32,13 +32,13 @@ void payloadEncrypt(const FunctionCallbackInfo<Value>& args)
     }
 
     // Check the argument types
-    if (    /*!args[0]->IsBuffer()      || */
-            !args[1]->IsNumber()        ||
-            /*!args[2]->IsBuffer()      || */
-            !args[3]->IsNumber()        ||
-            !args[4]->IsNumber()        ||
-            !args[5]->IsNumber()        //||
-            /*!args[6]->IsBuffer() */  )
+    if (    !node::Buffer::HasInstance(args[0]) ||
+            !args[1]->IsNumber()                ||
+            !node::Buffer::HasInstance(args[2]) ||
+            !args[3]->IsNumber()                ||
+            !args[4]->IsNumber()                ||
+            !args[5]->IsNumber()                ||
+            !node::Buffer::HasInstance(args[6]) )
     {
         isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Wrong arguments")));
         return;
@@ -81,13 +81,13 @@ void payloadDecrypt(const v8::FunctionCallbackInfo<v8::Value>& args)
     }
 
     // Check the argument types
-    if (    /*!args[0]->IsBuffer()      || */
-            !args[1]->IsNumber()        ||
-            /*!args[2]->IsBuffer()      || */
-            !args[3]->IsNumber()        ||
-            !args[4]->IsNumber()        ||
-            !args[5]->IsNumber()        //||
-            /*!args[6]->IsBuffer() */  )
+    if (    !node::Buffer::HasInstance(args[0]) ||
+            !args[1]->IsNumber()                ||
+            !node::Buffer::HasInstance(args[2]) ||
+            !args[3]->IsNumber()                ||
+            !args[4]->IsNumber()                ||
+            !args[5]->IsNumber()                ||
+            !node::Buffer::HasInstance(args[6]) )
     {
         isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Wrong arguments")));
         return;
