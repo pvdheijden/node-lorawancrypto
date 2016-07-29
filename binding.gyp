@@ -1,14 +1,14 @@
 {
     "targets": [
         {
-            "target_name": "lorawan-crypto",
-            "type": "<(library)",
+            "target_name": "lorawancrypto",
             "cflags": [
                 "Wall",
                 "Wextra"
             ],
             "define": [ ],
             "sources": [
+                "node-LoRaWANCrypto.cc",
                 "LoRaMac/LoRaMacCrypto.c",
                 "LoRaMac/crypto/aes.c",
                 "LoRaMac/crypto/cmac.c"
