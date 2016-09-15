@@ -2,10 +2,6 @@
     "targets": [
         {
             "target_name": "lorawancrypto",
-            "cflags": [
-                "-Wall",
-                "-Wextra"
-            ],
             "define": [ ],
             "sources": [
                 "node-LoRaWANCrypto.cc",
