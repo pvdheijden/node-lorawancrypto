@@ -7,8 +7,7 @@ var address = payload.readUInt32LE(1);
 var dir = 0;
 var sequenceCounter = payload[6] + (payload[7]<<8);
 
-
-var lorawanCrypto = require('../build/Release/lorawancrypto.node');
+var lorawanCrypto = require('../index');
 
 var encBuffer = Buffer.alloc(size);
 var decBuffer = Buffer.alloc(size);
