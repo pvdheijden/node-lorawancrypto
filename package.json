@@ -16,8 +16,8 @@
     "crypto",
     "AES"
   ],
-  "author": "Pim",
-  "license": "BSD",
+  "author": "Pim <pim@zifzaf.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/pvdheijden/node-lorawancrypto/issues"
   },
