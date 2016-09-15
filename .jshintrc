@@ -1,0 +1,26 @@
+{
+  "node": true,
+  "esversion": 6,
+  "strict": true,
+  "bitwise": true,
+  "camelcase": false,
+  "curly": true,
+  "forin": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "nonew": true,
+  "quotmark": "single",
+  "undef": true,
+  "unused": true,
+  "trailing": true,
+  "globals": {
+    "describe": false,
+    "it": false,
+    "before": false,
+    "after": false,
+    "beforeEach": false,
+    "afterEach": false
+  }
+}
