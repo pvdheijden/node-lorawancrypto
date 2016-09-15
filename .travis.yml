@@ -1,12 +1,10 @@
 language: node_js
 node_js:
-  - "6"
-  - "5"
-  - "4"
+  - node
 
 env:
   - CXX=g++-4.8
-  - CPATH=$HOME/node-lorawancrypto/LoRaMac:$HOME/node-lorawancrypto/LoRaMac/crypto
+  - CPATH=$TRAVIS_BUILD_DIR/LoRaMac:$TRAVIS_BUILD_DIR/LoRaMac/crypto
 addons:
   apt:
     sources:
