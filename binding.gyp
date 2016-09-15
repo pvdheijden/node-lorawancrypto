@@ -3,8 +3,8 @@
         {
             "target_name": "lorawancrypto",
             "cflags": [
-                "Wall",
-                "Wextra"
+                "-Wall",
+                "-Wextra"
             ],
             "define": [ ],
             "sources": [
