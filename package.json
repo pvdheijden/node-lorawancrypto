@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Node.js wrapper of LoRaWAN crypto functions.",
   "main": "index.js",
-  "bin": {
-    "lorawancrypto": "./build/Release/lorawancrypto.node"
-  },
   "scripts": {
     "test": "node test/test.js"
   },
