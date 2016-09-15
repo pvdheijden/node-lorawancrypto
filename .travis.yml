@@ -4,7 +4,6 @@ node_js:
 
 env:
   - CXX=g++-4.8
-  - CPATH=$TRAVIS_BUILD_DIR/LoRaMac:$TRAVIS_BUILD_DIR/LoRaMac/crypto
 addons:
   apt:
     sources:
