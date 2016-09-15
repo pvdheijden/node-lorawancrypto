@@ -6,6 +6,7 @@ node_js:
 
 env:
   - CXX=g++-4.8
+  - CPATH=$HOME/node-lorawancrypto/LoRaMac:$HOME/node-lorawancrypto/LoRaMac/crypto
 addons:
   apt:
     sources:

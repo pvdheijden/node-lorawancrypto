@@ -10,7 +10,8 @@
                 "LoRaMac/crypto/cmac.c"
             ],
             "include_dirs": [
-                "./LoRaMac/crypto"
+                "LoRaMac",
+                "LoRaMac/crypto"
             ],
             "link_settings": {
                 "libraries": [ ]
