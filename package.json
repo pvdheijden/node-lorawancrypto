@@ -1,10 +1,13 @@
 {
-  "name": "lorawan-crypto",
+  "name": "lorawancrypto",
   "version": "1.0.0",
   "description": "Node.js wrapper of LoRaWAN crypto functions.",
   "main": "index.js",
+  "bin": {
+    "lorawancrypto": "./build/Release/lorawancrypto.node"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,7 @@ var payload = Buffer.from([64,160,198,0,20,128,1,0,2,76,47,251,70,206,90]);
 var buffer = Buffer.from([76,47]);
 var size = 2;
 var key = Buffer.from('00112233445566778899AABBCCDDEEFF', 'hex');
-var address = payload[1] + (payload[2]<<8) + (payload[3]<<16) + (payload[4]<<24);
+var address = payload.readUInt32LE(1);
 var dir = 0;
 var sequenceCounter = payload[6] + (payload[7]<<8);
 
