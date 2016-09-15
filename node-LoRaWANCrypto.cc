@@ -3,7 +3,7 @@
 #include <node_buffer.h>
 
 extern "C" {
-    #include "LoraMac/LoRaMacCrypto.h"
+    #include "./LoraMac/LoRaMacCrypto.h"
 }
 
 using namespace v8;
