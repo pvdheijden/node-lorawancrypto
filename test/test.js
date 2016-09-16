@@ -14,8 +14,8 @@ var sequenceCounter = payload[6] + (payload[7]<<8);
 
 
 var lorawanCrypto = require('../index');
-var encBuffer = Buffer.alloc(size);
-var decBuffer = Buffer.alloc(size);
+//var encBuffer = Buffer.alloc(size);
+//var decBuffer = Buffer.alloc(size);
 
 describe('LoRaWANCrypto', function() {
     before(function() {
@@ -25,17 +25,16 @@ describe('LoRaWANCrypto', function() {
     describe('payloadDecrypt()', function() {
         it('should return <Buffer 12 34>', function() {
 
-            lorawanCrypto.payloadDecrypt(
+            var decBuffer = lorawanCrypto.payloadDecrypt(
                 buffer, size,
                 key,
                 address,
                 dir,
-                sequenceCounter,
-                encBuffer
+                sequenceCounter
             );
 
             // should be: hex 12 34
-            assert.equal(encBuffer.compare(Buffer.from([0x12, 0x34])), 0);
+            assert.equal(decBuffer.compare(Buffer.from([0x12, 0x34])), 0);
         });
     });
 
@@ -43,17 +42,22 @@ describe('LoRaWANCrypto', function() {
 
         it('should return <Buffer 4c 2f>', function() {
 
-            lorawanCrypto.payloadEncrypt(
-                encBuffer, size,
+            var encBuffer = lorawanCrypto.payloadEncrypt(
+                lorawanCrypto.payloadDecrypt(
+                    buffer, size,
+                    key,
+                    address,
+                    dir,
+                    sequenceCounter
+                ), size,
                 key,
                 address,
                 dir,
-                sequenceCounter,
-                decBuffer
+                sequenceCounter
             );
 
             // should be: hex 4c 2f
-            assert.equal(decBuffer.compare(Buffer.from([0x4c, 0x2f])), 0);
+            assert.equal(encBuffer.compare(Buffer.from([0x4c, 0x2f])), 0);
         });
     });
 });

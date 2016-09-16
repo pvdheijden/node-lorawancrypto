@@ -106,11 +106,50 @@ void payloadDecrypt(const v8::FunctionCallbackInfo<v8::Value>& args)
     LoRaMacPayloadDecrypt( buffer, size, key, address, dir, sequenceCounter, decBuffer );
 }
 
+/*!
+ * Computes the LoRaMAC Join Request frame MIC field
+ *
+ * \param [IN]  buffer          - Data buffer
+ * \param [IN]  size            - Data buffer size
+ * \param [IN]  key             - AES key to be used
+ * \param [OUT] mic             - Computed MIC field
+ */
+void joinComputeMic(const v8::FunctionCallbackInfo<v8::Value>& args)
+{
+    Isolate* isolate = args.GetIsolate();
+
+    // Check the number of arguments passed.
+    if (args.Length() < 3) {
+        // Throw an Error that is passed back to JavaScript
+        isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments")));
+        return;
+    }
+
+    // Check the argument types
+    if (    !node::Buffer::HasInstance(args[0]) ||
+            !args[1]->IsNumber()                ||
+            !node::Buffer::HasInstance(args[2]) )
+    {
+        isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "Wrong arguments")));
+        return;
+    }
+
+    const uint8_t* buffer = (const uint8_t *)node::Buffer::Data(args[0]);
+    uint16_t size = args[1]->NumberValue();
+    const uint8_t* key = (const uint8_t *)node::Buffer::Data(args[2]);
+    uint32_t mic;
+
+    LoRaMacJoinComputeMic( buffer, size, key, &mic );
+
+    Local<Number> retval = v8::Number::New(isolate, mic);
+    args.GetReturnValue().Set(retval);
+}
 
 
 void init(Handle <Object> exports, Handle<Object> module) {
     NODE_SET_METHOD(exports, "payloadEncrypt", payloadEncrypt);
     NODE_SET_METHOD(exports, "payloadDecrypt", payloadDecrypt);
+    NODE_SET_METHOD(exports, "joinComputeMic", joinComputeMic);
 }
 
 NODE_MODULE(lorawan_crypto, init)

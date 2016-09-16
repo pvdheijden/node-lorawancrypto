@@ -5,6 +5,6 @@
 
 Wrappers for the LoraWAN crypto functions as included with: [LoRaMac-node demo/reference] (https://github.com/Lora-net/LoRaMac-node "Reference implementation and documentation of a LoRa network node.")
 
-Wrapped crypto functions
+Wrapped crypto functions:
 * LoRaMacPayloadEncrypt
 * LoRaMacPayloadDecrypt
