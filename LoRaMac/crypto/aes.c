@@ -32,13 +32,11 @@
  */
 
 /* define if you have a fast memcpy function on your system */
-#if 0
-#  define HAVE_MEMCPY
-#  include <string.h>
-#  if defined( _MSC_VER )
-#    include <intrin.h>
-#    pragma intrinsic( memcpy )
-#  endif
+#define HAVE_MEMCPY
+#include <string.h>
+#if defined( _MSC_VER )
+#include <intrin.h>
+#pragma intrinsic( memcpy )
 #endif
 
 
@@ -312,6 +310,7 @@ uint8_t inv_affine(const uint8_t x)
 #  define block_copy(d, s)          copy_block(d, s)
 #endif
 
+#if !defined( HAVE_MEMCPY )
 static void copy_block( void *d, const void *s )
 {
 #if defined( HAVE_UINT_32T )
@@ -345,6 +344,8 @@ static void copy_block_nn( uint8_t * d, const uint8_t *s, uint8_t nn )
         //*((uint8_t*)d)++ = *((uint8_t*)s)++;
         *d++ = *s++;
 }
+#endif
+
 
 static void xor_block( void *d, const void *s )
 {

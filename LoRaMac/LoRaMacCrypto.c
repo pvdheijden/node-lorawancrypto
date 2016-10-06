@@ -101,7 +101,7 @@ void LoRaMacComputeMic( const uint8_t *buffer, uint16_t size, const uint8_t *key
     AES_CMAC_Update( AesCmacCtx, buffer, size & 0xFF );
     
     AES_CMAC_Final( Mic, AesCmacCtx );
-    
+
     *mic = ( uint32_t )( ( uint32_t )Mic[3] << 24 | ( uint32_t )Mic[2] << 16 | ( uint32_t )Mic[1] << 8 | ( uint32_t )Mic[0] );
 }
 
@@ -174,9 +174,21 @@ void LoRaMacJoinDecrypt( const uint8_t *buffer, uint16_t size, const uint8_t *ke
     aes_set_key( key, 16, &AesContext );
     aes_encrypt( buffer, decBuffer, &AesContext );
     // Check if optional CFList is included
-    if( size >= 16 )
+    if( size > 16 )
     {
         aes_encrypt( buffer + 16, decBuffer + 16, &AesContext );
+    }
+}
+
+void LoRaMacJoinEncrypt( const uint8_t *buffer, uint16_t size, const uint8_t *key, uint8_t *encBuffer )
+{
+    memset( AesContext.ksch, '\0', 240 );
+    aes_set_key( key, 16, &AesContext );
+    aes_decrypt( buffer, encBuffer, &AesContext );
+    // Check if optional CFList is included
+    if( size > 16 )
+    {
+        aes_decrypt( buffer + 16, encBuffer + 16, &AesContext );
     }
 }
 

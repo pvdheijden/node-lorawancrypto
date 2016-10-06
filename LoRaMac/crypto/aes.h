@@ -34,7 +34,7 @@
 #if 1
 #  define AES_ENC_PREKEYED  /* AES encryption with a precomputed key schedule  */
 #endif
-#if 0
+#if 1
 #  define AES_DEC_PREKEYED  /* AES decryption with a precomputed key schedule  */
 #endif
 #if 0
@@ -90,7 +90,7 @@ return_type aes_encrypt( const uint8_t in[N_BLOCK],
                          const aes_context ctx[1] );
 
 return_type aes_cbc_encrypt( const uint8_t *in,
-                         uint8_t *out,
+                         uint8_t out[N_BLOCK],
                          int32_t n_block,
                          uint8_t iv[N_BLOCK],
                          const aes_context ctx[1] );

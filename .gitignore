@@ -51,6 +51,7 @@ Session.vim
 tags
 ### C template
 # Object files
+*.d
 *.o
 *.ko
 *.obj

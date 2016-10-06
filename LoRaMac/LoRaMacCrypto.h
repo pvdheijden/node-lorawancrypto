@@ -96,6 +96,16 @@ void LoRaMacJoinComputeMic( const uint8_t *buffer, uint16_t size, const uint8_t 
 void LoRaMacJoinDecrypt( const uint8_t *buffer, uint16_t size, const uint8_t *key, uint8_t *decBuffer );
 
 /*!
+ * Computes the LoRaMAC join frame encryption
+ *
+ * \param [IN]  buffer          - Data buffer
+ * \param [IN]  size            - Data buffer size
+ * \param [IN]  key             - AES key to be used
+ * \param [OUT] encBuffer       - Encrypted buffer
+ */
+void LoRaMacJoinEncrypt( const uint8_t *buffer, uint16_t size, const uint8_t *key, uint8_t *encBuffer );
+
+/*!
  * Computes the LoRaMAC join frame decryption
  *
  * \param [IN]  key             - AES key to be used
