@@ -15,8 +15,4 @@ test-aes: $(obj)
 
 .PHONY: clean
 clean:
-	rm -f $(obj) test-aes
-
-.PHONY: clean
-cleandep:
-	rm -f $(dep)
+	rm -f $(dep) $(obj) test-aes
