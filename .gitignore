@@ -190,3 +190,5 @@ $RECYCLE.BIN/
 *.lnk
 
 .vscode
+
+test-aes
