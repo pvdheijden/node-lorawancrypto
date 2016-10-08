@@ -1,6 +1,6 @@
 {
   "name": "lorawancrypto",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Node.js wrapper of LoRaWAN crypto functions.",
   "main": "index.js",
   "scripts": {
