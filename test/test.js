@@ -37,7 +37,9 @@ var mic = payload.readUInt32LE(payload.length - 4);
 var NwkSKey = Buffer.from('44024241ed4ce9a68c6a8bc055233fd3', 'hex');
 var AppSKey = Buffer.from('ec925802ae430ca77fd3dd73cb2cc588', 'hex');
 
-var AppKey = Buffer.from('00112233445566778899AABBCCDDEEFF', 'hex');
+
+var joinRequestPayload = Buffer.from('001032547698badcfe08871a000ba30400b61289518c80', 'hex');
+var AppKey = Buffer.from('6DD49E413402C1C4AC53AB1805F0A714', 'hex');
 
 
 var lorawanCrypto = require('../index');
@@ -77,11 +79,17 @@ describe('LoRaWANCrypto', function() {
     describe('joinComputeMic', function() {
         
         it('should compute the Join MIC', function() {
-            var MIC = lorawanCrypto.joinComputeMic(data, size, AppKey);
-            MIC = 0;
-            assert(true);
-        });
+            var joinRequestData = joinRequestPayload.slice(0, -4);
+            var joinRequestDataSize = joinRequestData.length;
+            var joinRequestMIC = joinRequestPayload.slice(joinRequestDataSize).readUInt32LE();
+            console.log('2156679561');
+            console.log(joinRequestMIC);
 
+            var calcMIC = lorawanCrypto.joinComputeMic(joinRequestData, joinRequestData.length, AppKey);
+            console.log(calcMIC);
+
+            assert.equal(joinRequestMIC, calcMIC);
+        });
     });
 
     describe('joinEncrypt -> joinDecrypt', function() {

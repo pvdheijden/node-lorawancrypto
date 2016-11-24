@@ -41,7 +41,7 @@ module.exports.joinComputeSKeys = function(key, appNonce, devNonce) {
     lorawanCrypto.joinComputeSKeys(key, appNonce, devNonce, nwkSKey, appSKey);
 
     return {
-        nwkSKey: nwkSKey,
-        appSKey: appSKey
+        NwkSKey: nwkSKey,
+        AppSKey: appSKey
     };
 };
