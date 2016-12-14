@@ -93,17 +93,17 @@ describe('LoRaWANCrypto', function() {
     });
 
     describe('joinEncrypt -> joinDecrypt', function() {
-        var joinRequest = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]);
-        var joinRequestLength = 18;
+        var joinRequest = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
+        var joinRequestLength = 16;
 
         it('should encrypt the join message', function() {
-            //console.log('ORIGINAL: ', joinRequest);
+            console.log('ORIGINAL: ', joinRequest);
 
-            var encBuffer = lorawanCrypto.joinEncrypt(joinRequest, joinRequestLength, AppSKey);
-            //console.log('LoRa ENC: ', encBuffer);
+            encBuffer = lorawanCrypto.joinEncrypt(joinRequest, joinRequestLength, AppSKey);
+            console.log('LoRa ENC: ', encBuffer);
 
-            var decBuffer = lorawanCrypto.joinDecrypt(encBuffer, encBuffer.length, AppSKey);
-            //console.log('LoRa DEC: ', decBuffer);
+            decBuffer = lorawanCrypto.joinDecrypt(encBuffer, encBuffer.length, AppSKey);
+            console.log('LoRa DEC: ', decBuffer);
 
             assert(joinRequest.compare(decBuffer) === 0);
         });
