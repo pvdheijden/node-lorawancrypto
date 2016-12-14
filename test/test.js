@@ -99,10 +99,10 @@ describe('LoRaWANCrypto', function() {
         it('should encrypt the join message', function() {
             console.log('ORIGINAL: ', joinRequest);
 
-            encBuffer = lorawanCrypto.joinEncrypt(joinRequest, joinRequestLength, AppSKey);
+            var encBuffer = lorawanCrypto.joinEncrypt(joinRequest, joinRequestLength, AppSKey);
             console.log('LoRa ENC: ', encBuffer);
 
-            decBuffer = lorawanCrypto.joinDecrypt(encBuffer, encBuffer.length, AppSKey);
+            var decBuffer = lorawanCrypto.joinDecrypt(encBuffer, encBuffer.length, AppSKey);
             console.log('LoRa DEC: ', decBuffer);
 
             assert(joinRequest.compare(decBuffer) === 0);
