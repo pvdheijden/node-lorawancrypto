@@ -99,14 +99,71 @@ describe('LoRaWANCrypto', function() {
         it('should encrypt the join message', function() {
             console.log('ORIGINAL: ', joinRequest);
 
-            var encBuffer = lorawanCrypto.joinEncrypt(joinRequest, joinRequestLength, AppSKey);
+            var encBuffer = lorawanCrypto.joinEncrypt(joinRequest, joinRequestLength, AppKey);
             console.log('LoRa ENC: ', encBuffer);
 
-            var decBuffer = lorawanCrypto.joinDecrypt(encBuffer, encBuffer.length, AppSKey);
+            var decBuffer = lorawanCrypto.joinDecrypt(encBuffer, encBuffer.length, AppKey);
             console.log('LoRa DEC: ', decBuffer);
 
             assert(joinRequest.compare(decBuffer) === 0);
         });
+    });
 
+    describe('join request message', function() {
+        var joinRequest = Buffer.from('ADs0APB+1bNwCIcaAAujBABCVwf+4bE=', 'base64');
+        var joinRequestLength = joinRequest.length;
+
+        var joinAccept = Buffer.from('IFcuJ+H6vWFCmjNrkVQtp/c1KAsXBRertnKAFK1Z081d', 'base64');
+        var joinAcceptLength = joinAccept.length;
+
+        it('should be a valid join request message', function() {
+            console.log('joinRequest', joinRequest);
+            console.log('joinRequest length', joinRequestLength);
+        });
+
+        it('should be a valid join accept response', function() {
+            var decJoinAccept = lorawanCrypto.joinDecrypt(joinAccept, joinAcceptLength, 
+                Buffer.from('6DD49E413402C1C4AC53AB1805F0A714', 'hex'));
+            console.log('decJoinAccept: ', decJoinAccept);
+            console.log('decJoinAccept length', joinAcceptLength);
+        });
     });
 });
+
+
+/*
+//JOIN RFEQUEST
+{
+    "rxpk":[{   
+            "tmst":9400419,
+            "chan":2,
+            "rfch":1,
+            "freq":868.500000,
+            "stat":1,
+            "modu":"LORA",
+            "datr":"SF7BW125",
+            "codr":"4/5",
+            "lsnr":7.5,
+            "rssi":-72,
+            "size":23,
+            "data":"ADs0APB+1bNwCIcaAAujBABCVwf+4bE="
+    }]
+}
+
+//JOIN ACCEPT
+{
+    "txpk":{
+        "imme":false,
+        "tmst":14400419,
+        "freq":868.5,
+        "rfch":0,
+        "powe":14,
+        "modu":"LORA",
+        "datr":"SF7BW125",
+        "codr":"4/5",
+        "ipol":true,
+        "size":33,
+        "data":"IFcuJ+H6vWFCmjNrkVQtp/c1KAsXBRertnKAFK1Z081d"
+    }
+}
+*/

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/pvdheijden/node-lorawancrypto#readme",
   "devDependencies": {
+    "grunt-cli": "*",
     "grunt": "*",
     "jshint": "*",
     "grunt-contrib-jshint": "*",
